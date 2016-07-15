@@ -1,36 +1,14 @@
-# Express Starter
+# kontinuum
 
-[![Build Status](https://travis-ci.org/esayemm/express-starter.svg?branch=master)](https://travis-ci.org/esayemm/express-starter)
+Express server that handles deployment to a kubernetes cluster. Run this on a node that has kubectl cli already configured.
 
-Boilerplate for starting a node express project.
+## Setup
 
-##Prerequisite
-Have [starter-deck-cli](https://github.com/esayemm/starter-deck-cli) installed
-globally.
+Create .secrets file in project root 
 
-##Installation
-```sh
-sdcli save express https://github.com/esayemm/express-starter
-```
-<hr>
-##Development
-####Publish a release
-Use [npm version](https://docs.npmjs.com/cli/version) and follow [semver](http://semver.org/) rules.<br>
+## API
 
-```
-npm version [ major | minor | patch ]
-```
+#### POST `/deploy`
+require multipart/form-data
 
-1. bumps package version
-2. creates git tag
-3. push tag
-4. builds
-5. npm publish
-
-## Deployment
-
-Use provided Dockefile and push to your own repositories.
-
-```sh
-docker build -t <name>/<imagename>:<tag> .
-```
+-F data=@[kubernetes yaml file
