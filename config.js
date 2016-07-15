@@ -13,6 +13,7 @@ config.dev = {
   redis: {
     host: 'docker.me',
     port: 6379,
+    namespace: 'KONTINUUM',
   },
   mongo: {
     host: 'docker.me',
@@ -26,6 +27,7 @@ config.test = {
   appId: '',
   redis: {
     host: 'localhost',
+    namespace: 'KONTINUUM_TEST',
     port: 6379,
   },
   mongo: {
@@ -40,6 +42,7 @@ config.travis = {
   appId: '',
   redis: {
     host: 'localhost',
+    namespace: 'KONTINUUM_TEST',
     port: 6379,
   },
   mongo: {
@@ -54,6 +57,7 @@ config.prod = {
   appId: '',
   redis: {
     host: 'localhost',
+    namespace: 'KONTINUUM',
     port: 6379,
   },
   mongo: {
