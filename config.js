@@ -9,6 +9,7 @@ const envOverrides = {
 config.dev = {
   port: envOverrides.port || 8080,
   secret: 'topsecret',
+  superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
     host: 'docker.me',
@@ -24,6 +25,7 @@ config.dev = {
 config.test = {
   port: envOverrides.port || 8080,
   secret: 'topsecret',
+  superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
     host: 'localhost',
@@ -39,6 +41,7 @@ config.test = {
 config.travis = {
   port: envOverrides.port || 8080,
   secret: 'topsecret',
+  superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
     host: 'localhost',
@@ -54,6 +57,7 @@ config.travis = {
 config.prod = {
   port: envOverrides.port || 8080,
   secret: 'topsecret',
+  superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
     host: 'localhost',

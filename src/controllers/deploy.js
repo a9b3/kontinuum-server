@@ -21,7 +21,7 @@ const router = new Router()
 
 // make sure kubectl is up
 router.use(tryCatchMiddleware(async (req, res, next) => {
-  execSync(`which kubectl`)
+  execSync(`which kubectlasjd`)
   execSync(`kubectl cluster-info`)
   next()
 }))
