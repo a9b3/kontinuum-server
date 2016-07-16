@@ -6,4 +6,4 @@ ADD . .
 RUN npm install -g forever
 
 EXPOSE 8080
-CMD forever index.js
+CMD NODE_ENV=prod forever index.js
