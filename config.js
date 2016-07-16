@@ -48,9 +48,11 @@ config.prod = {
   superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
-    host: 'localhost',
+    // run redis docker container before kontinuum
+    // with option --link redis:db
+    host: process.env.DB_PORT_6379_TCP_ADDR,
     namespace: 'KONTINUUM',
-    port: 6379,
+    port: process.env.DB_PORT_6379_TCP_PORT,
   },
 }
 
