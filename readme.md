@@ -4,11 +4,20 @@ Express server that handles deployment to a kubernetes cluster. Run this on a no
 
 ## Setup
 
-Create .secrets file in project root 
+Create .secret.js file in project root
+
+```javascript
+module.exports = 'suchgoodsecurity'
+```
 
 ## API
 
 #### POST `/deploy`
 require multipart/form-data
 
--F data=@[kubernetes yaml file
+- -F data=@kubernetes yaml file
+- -H token=[token]
+
+#### POST `/get_token`
+
+- -H password=[password]
