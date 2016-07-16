@@ -16,10 +16,6 @@ config.dev = {
     port: 6379,
     namespace: 'KONTINUUM',
   },
-  mongo: {
-    host: 'docker.me',
-    port: 27017,
-  },
 }
 
 config.test = {
@@ -31,10 +27,6 @@ config.test = {
     host: 'localhost',
     namespace: 'KONTINUUM_TEST',
     port: 6379,
-  },
-  mongo: {
-    host: 'localhost',
-    port: 27017,
   },
 }
 
@@ -48,10 +40,6 @@ config.travis = {
     namespace: 'KONTINUUM_TEST',
     port: 6379,
   },
-  mongo: {
-    host: 'localhost',
-    port: 27017,
-  },
 }
 
 config.prod = {
@@ -63,10 +51,6 @@ config.prod = {
     host: 'localhost',
     namespace: 'KONTINUUM',
     port: 6379,
-  },
-  mongo: {
-    host: 'localhost',
-    port: 27017,
   },
 }
 

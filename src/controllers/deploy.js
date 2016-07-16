@@ -21,7 +21,7 @@ const router = new Router()
 
 // make sure kubectl is up
 router.use(tryCatchMiddleware(async (req, res, next) => {
-  execSync(`which kubectlasjd`)
+  execSync(`which kubectl`)
   execSync(`kubectl cluster-info`)
   next()
 }))
@@ -32,9 +32,9 @@ router.post(
   upload.single(`data`),
   tryCatchMiddleware(async (req, res) => {
     const stdout = execSync(`kubectl get nodes
-                             kubectl get pods
-                             kubectl apply -f ${req.file.path}
-                             rm ${req.file.path}
+                            kubectl get pods
+                            kubectl apply -f ${req.file.path}
+                            rm ${req.file.path}
                             `.trim()).toString()
     res.send(stdout)
   }),
