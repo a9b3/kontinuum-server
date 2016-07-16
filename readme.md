@@ -2,12 +2,16 @@
 
 Express server that handles deployment to a kubernetes cluster. Run this on a node that has kubectl cli already configured.
 
-## Setup
+## Run
 
-Create .secret.js file in project root
+Make sure the system this is running on has the kubectl command setup with the cluster you want to work with.
 
-```javascript
-module.exports = 'suchgoodsecurity'
+```sh
+## needs redis running on regular port
+docker run --name redis -d -p 6379:6379 redis
+
+## SUPER_INSECURE_KEY will be your password lol
+docker run -e "SUPER_INSECURE_KEY=<blah>" -d -p 8080:80 --name kontinuum esayemm/kontinuum
 ```
 
 ## API
