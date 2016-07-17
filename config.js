@@ -22,7 +22,7 @@ config.dev = {
 }
 
 config.prod = {
-  kubeBinary: envOverrides.kubeBinary,
+  kubeBinary: path.resolve(process.cwd(), envOverrides.kubeBinary),
   port: envOverrides.port || 80,
   secret: 'topsecret',
   superInsecureKey: require('./.secret.js'),
