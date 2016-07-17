@@ -50,7 +50,7 @@ git clone https://github.com/esayemm/kontinuum
 cd kontinuum
 npm i
 cd ..
-NODE_ENV=prod KUBE_BINARY=./kubectl forever start kontinuum/index.js
+NODE_ENV=prod KUBE_BINARY=./kubectl SUPER_INSECURE_KEY=<password> forever start kontinuum/index.js
 ```
 
 ## API
