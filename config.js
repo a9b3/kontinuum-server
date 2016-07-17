@@ -1,12 +1,15 @@
 const env = process.env.NODE_ENV || 'dev'
+const path = require('path')
 
 const config = {}
 
 const envOverrides = {
   port: process.env.PORT,
+  kubeBinary: process.env.KUBE_BINARY || 'kubectl',
 }
 
 config.dev = {
+  kubeBinary: envOverrides.kubeBinary,
   port: envOverrides.port || 8080,
   secret: 'topsecret',
   superInsecureKey: require('./.secret.js'),
@@ -18,41 +21,17 @@ config.dev = {
   },
 }
 
-config.test = {
-  port: envOverrides.port || 8080,
-  secret: 'topsecret',
-  superInsecureKey: require('./.secret.js'),
-  appId: '',
-  redis: {
-    host: 'localhost',
-    namespace: 'KONTINUUM_TEST',
-    port: 6379,
-  },
-}
-
-config.travis = {
-  port: envOverrides.port || 8080,
-  secret: 'topsecret',
-  superInsecureKey: require('./.secret.js'),
-  appId: '',
-  redis: {
-    host: 'localhost',
-    namespace: 'KONTINUUM_TEST',
-    port: 6379,
-  },
-}
-
 config.prod = {
-  port: envOverrides.port || 8080,
+  kubeBinary: envOverrides.kubeBinary,
+  port: envOverrides.port || 80,
   secret: 'topsecret',
   superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
-    // run redis docker container before kontinuum
-    // with option --link redis:db
-    host: process.env.DB_PORT_6379_TCP_ADDR,
+    // besure to run redis before running kontinuum
+    host: 'localhost',
     namespace: 'KONTINUUM',
-    port: process.env.DB_PORT_6379_TCP_PORT,
+    port: 6379,
   },
 }
 

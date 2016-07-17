@@ -3,6 +3,7 @@ import path from 'path'
 import multer from 'multer'
 import { tryCatchMiddleware } from '../services/middleware-helper.js'
 import { execSync } from 'child_process'
+import config from '../../config.js'
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -21,8 +22,8 @@ const router = new Router()
 
 // make sure kubectl is up
 router.use(tryCatchMiddleware(async (req, res, next) => {
-  execSync(`which kubectl`)
-  execSync(`kubectl cluster-info`)
+  execSync(`which ${config.kubeBinary}`)
+  execSync(`${config.kubeBinary} cluster-info`)
   next()
 }))
 
@@ -31,9 +32,9 @@ router.post(
   `/`,
   upload.single(`data`),
   tryCatchMiddleware(async (req, res) => {
-    const stdout = execSync(`kubectl get nodes
-                            kubectl get pods
-                            kubectl apply -f ${req.file.path}
+    const stdout = execSync(`${config.kubeBinary} get nodes
+                            ${config.kubeBinary} get pods
+                            ${config.kubeBinary} apply -f ${req.file.path}
                             rm ${req.file.path}
                             `.trim()).toString()
     res.send(stdout)
