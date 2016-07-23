@@ -35,7 +35,6 @@ router.post(
     const stdout = execSync(`${config.kubeBinary} get nodes
                             ${config.kubeBinary} get pods
                             ${config.kubeBinary} apply -f ${req.file.path}
-                            rm ${req.file.path}
                             `.trim()).toString()
     res.send(stdout)
   }),
