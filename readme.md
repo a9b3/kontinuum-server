@@ -4,11 +4,15 @@ Express server that handles deployment to a kubernetes cluster. Run this on a no
 
 ## Usage
 
-You must pass the environment variable `MASTER_IP`.
+You must pass the environment variable.
+
+- `MASTER_IP` - ip of kuberneters master
+- `SUPER_INSECURE_KEY` - token of admin kubernetes user
 
 ```sh
 docker run -p 8080:8080 \ 
 	-e MASTER_IP=<kube master ip> \
+	-e SUPER_INSECURE_KEY='foo' \
 	--name kontinuum \
 	--d \
 	esayemm/kontinuum
