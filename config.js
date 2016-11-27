@@ -1,19 +1,16 @@
-const env = process.env.NODE_ENV || 'dev'
 const path = require('path')
+const env = process.env.NODE_ENV || 'dev'
+const SUPER_INSECURE_KEY = process.env.SUPER_INSECURE_KEY
+const PORT = process.env.PORT || 8080
+const KUBE_BINARY = process.env.KUBE_BINARY || 'kubectl'
 
 const config = {}
 
-const envOverrides = {
-  port: process.env.PORT,
-  kubeBinary: process.env.KUBE_BINARY || 'kubectl',
-}
-
 config.dev = {
-  kubeBinary: envOverrides.kubeBinary,
-  port: envOverrides.port || 8080,
+  kubeBinary: KUBE_BINARY,
+  port: PORT,
   secret: 'topsecret',
-  superInsecureKey: require('./.secret.js'),
-  appId: '',
+  superInsecureKey: SUPER_INSECURE_KEY,
   redis: {
     host: 'localhost',
     port: 6379,
@@ -22,11 +19,10 @@ config.dev = {
 }
 
 config.prod = {
-  kubeBinary: path.resolve(process.cwd(), envOverrides.kubeBinary),
-  port: envOverrides.port || 80,
+  kubeBinary: path.resolve(process.cwd(), KUBE_BINARY),
+  port: PORT,
   secret: 'topsecret',
-  superInsecureKey: require('./.secret.js'),
-  appId: '',
+  superInsecureKey: SUPER_INSECURE_KEY,
   redis: {
     // besure to run redis before running kontinuum
     host: 'localhost',
@@ -35,7 +31,4 @@ config.prod = {
   },
 }
 
-export default Object.assign(
-  {},
-  config[env],
-)
+export default config[env]
