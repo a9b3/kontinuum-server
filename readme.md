@@ -14,7 +14,7 @@ docker run -p 8080:8080 \
 	-e MASTER_IP=<kube master ip> \
 	-e SUPER_INSECURE_KEY='foo' \
 	--name kontinuum \
-	--d \
+	-d \
 	esayemm/kontinuum
 ```
 

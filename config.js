@@ -19,7 +19,7 @@ config.dev = {
 }
 
 config.prod = {
-  kubeBinary: path.resolve(process.cwd(), KUBE_BINARY),
+  kubeBinary: KUBE_BINARY,
   port: PORT,
   secret: 'topsecret',
   superInsecureKey: SUPER_INSECURE_KEY,
