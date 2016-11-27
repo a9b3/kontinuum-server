@@ -15,7 +15,7 @@ config.dev = {
   superInsecureKey: require('./.secret.js'),
   appId: '',
   redis: {
-    host: 'docker.me',
+    host: 'localhost',
     port: 6379,
     namespace: 'KONTINUUM',
   },
