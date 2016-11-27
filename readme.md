@@ -2,6 +2,18 @@
 
 Express server that handles deployment to a kubernetes cluster. Run this on a node that has kubectl cli already configured. This is pretty hacky, be warned before using for anything serious haha.
 
+## Usage
+
+You must pass the environment variable `MASTER_IP`.
+
+```sh
+docker run -p 8080:8080 \ 
+	-e MASTER_IP=<kube master ip> \
+	--name kontinuum \
+	--d \
+	esayemm/kontinuum
+```
+
 ## Setup
 
 1. Set up a node droplet in digital ocean.
