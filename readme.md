@@ -4,6 +4,8 @@ Express server that handles deployment to a kubernetes cluster. Run this on a no
 
 ## Usage
 
+You must have certs and pass it into docker container via `-v /opt/certs:/opt/certs`, requires admin.key, admin.crt, ca.key
+
 You must pass the environment variable.
 
 - `MASTER_IP` - ip of kuberneters master
@@ -15,6 +17,7 @@ docker run -p 8080:8080 \
 	-e SUPER_INSECURE_KEY='foo' \
 	--name kontinuum \
 	-d \
+	-v /opt/certs:/opt/certs \
 	esayemm/kontinuum
 ```
 
