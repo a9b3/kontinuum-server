@@ -4,12 +4,9 @@ Express server that handles deployment to a kubernetes cluster. Run this on a no
 
 ## Usage
 
-You must have certs and pass it into docker container via `-v /opt/certs:/opt/certs`, requires admin.key, admin.crt, ca.key
-
-You must pass the environment variable.
-
-- `MASTER_IP` - ip of kuberneters master
-- `SUPER_INSECURE_KEY` - token of admin kubernetes user
+1. Provide `/opt/certs` volume. Directory should have `admin.key`, `admin.crt`, `ca.key`
+2. `MASTER_IP` env variable, ip of kubernetes master
+3. `SUPER_INSECURE_KEY` token of admin kubernetes user, in `token.csv` in kubernetes controller.
 
 ```sh
 docker run -p 8080:8080 \ 
@@ -21,15 +18,9 @@ docker run -p 8080:8080 \
 	esayemm/kontinuum
 ```
 
-## Setup
+## Docs
 
-1. Set up a node droplet in digital ocean.
-2. Provision the droplet, by manually moving certs into droplet, and downloading kubectl.
-
-```sh
-# from your local machine with the certs
-scp -r <location of certs> root@<ip>:~/certs
-```
+These are the commands required to run this server, these commands should be in the Dockerfile this is just for documentation purposes.
 
 ```sh
 # inside remote droplet
